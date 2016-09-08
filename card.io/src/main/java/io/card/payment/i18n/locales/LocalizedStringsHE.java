@@ -36,6 +36,7 @@ public class LocalizedStringsHE implements SupportedLocale<StringKey> {
         mDisplay.put(StringKey.CARDTYPE_DISCOVER, "Discover‏");
         mDisplay.put(StringKey.CARDTYPE_JCB, "JCB‏");
         mDisplay.put(StringKey.CARDTYPE_MASTERCARD, "מאסטרקארד");
+        mDisplay.put(StringKey.CARDTYPE_UATP, "UATP‏");
         mDisplay.put(StringKey.CARDTYPE_VISA, "ויזה");
         mDisplay.put(StringKey.DONE, "בוצע");
         mDisplay.put(StringKey.ENTRY_CVV, "קוד אימות כרטיס");

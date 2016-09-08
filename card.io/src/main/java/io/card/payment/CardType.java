@@ -53,6 +53,10 @@ public enum CardType {
      */
     MAESTRO("Maestro"),
     /**
+     * UATP
+     */
+    UATP("UATP"),
+    /**
      * Unknown card type.
      */
     UNKNOWN("Unknown"),
@@ -99,6 +103,8 @@ public enum CardType {
                 return LocalizedStrings.getString(StringKey.CARDTYPE_MASTERCARD, languageOrLocale);
             case MAESTRO:
                 return LocalizedStrings.getString(StringKey.CARDTYPE_MAESTRO, languageOrLocale);
+            case UATP:
+                return LocalizedStrings.getString(StringKey.CARDTYPE_UATP, languageOrLocale);
             case VISA:
                 return LocalizedStrings.getString(StringKey.CARDTYPE_VISA, languageOrLocale);
             default:
@@ -115,6 +121,7 @@ public enum CardType {
         int result;
         switch (this) {
             case AMEX:
+            case UATP:
                 result = 15;
                 break;
             case JCB:
@@ -154,6 +161,7 @@ public enum CardType {
             case VISA:
             case DISCOVER:
             case DINERSCLUB:
+            case UATP:
                 result = 3;
                 break;
             case UNKNOWN:
@@ -196,6 +204,9 @@ public enum CardType {
             }
             case JCB: {
                 cardImageData = Base64EncodedImages.paypal_sdk_icon_jcb_large;
+                break;
+            }
+            case UATP: {
                 break;
             }
             default: {
@@ -247,6 +258,7 @@ public enum CardType {
     static {
         // initialize
         intervalLookup = new HashMap<Pair<String, String>, CardType>();
+        intervalLookup.put(getNewPair("1", null), CardType.UATP);               // UATP
         intervalLookup.put(getNewPair("300", "305"), CardType.DINERSCLUB);      // Diners Club (Discover)
         intervalLookup.put(getNewPair("309", null), CardType.DINERSCLUB);       // Diners Club (Discover)
         intervalLookup.put(getNewPair("34", null), CardType.AMEX);              // AmEx
